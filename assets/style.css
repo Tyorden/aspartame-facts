@@ -384,6 +384,108 @@ footer {
 .footer-inner { max-width: 72rem; margin: 0 auto; }
 .footer-inner p { max-width: var(--measure); }
 
+/* ---------- calculator ---------- */
+
+.calc {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-raised);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  max-width: var(--measure);
+  font-family: var(--sans);
+}
+
+.calc-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1.1rem;
+}
+
+.calc-field { flex: 1 1 9rem; min-width: 8rem; }
+
+.calc-field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.calc input[type="number"] {
+  width: 100%;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.calc input[type="number"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: var(--accent);
+}
+
+.unit-toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.unit-toggle button {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.55rem 0.9rem;
+  border: 0;
+  background: var(--bg);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.unit-toggle button + button { border-left: 1px solid var(--rule-strong); }
+.unit-toggle button[aria-pressed="true"] { background: var(--accent); color: var(--bg-raised); }
+@media (prefers-color-scheme: dark) {
+  .unit-toggle button[aria-pressed="true"] { color: #14140f; }
+}
+
+.calc-out {
+  border-top: 1px solid var(--rule);
+  margin-top: 1.4rem;
+  padding-top: 1.3rem;
+}
+
+.calc-headline {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 1.1rem;
+}
+.calc-headline strong { color: var(--accent); font-size: 1.3rem; }
+
+.calc-list { list-style: none; padding: 0; margin: 0; font-size: 0.93rem; }
+.calc-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.calc-list li:last-child { border-bottom: 0; }
+.calc-list .v { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.calc-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 1.1rem 0 0;
+}
+
 /* toc */
 .toc {
   font-family: var(--sans);

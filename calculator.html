@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work out your own limit — Aspartame Facts</title>
+<meta name="description" content="Enter your weight to see your personal aspartame limit, how many cans it takes to reach it, and which ingredient in a diet soda you actually run out of room for first.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="index.html">Aspartame<span>Facts</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="calculator.html" aria-current="page">Your dose</a>
+      <a href="perspective.html">Perspective</a>
+      <a href="the-evidence.html">Evidence</a>
+      <a href="the-study.html">The study</a>
+      <a href="myths.html">Myths</a>
+      <a href="caveats.html">Caveats</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="page-head">
+    <p class="eyebrow">Work it out yourself</p>
+    <h1>What's actually a lot, for you?</h1>
+    <p class="standfirst">Safety limits for aspartame are set per kilogram of body weight, so
+    "a lot" is a different number for everyone. Put your weight in and find out what yours is.</p>
+  </div>
+
+  <div class="prose">
+
+    <div class="calc">
+      <div class="calc-row">
+        <div class="calc-field">
+          <label for="weight">Your weight</label>
+          <input type="number" id="weight" value="70" min="1" max="500" step="1">
+        </div>
+        <div class="calc-field" style="flex:0 0 auto">
+          <label for="unit-kg">Units</label>
+          <div class="unit-toggle" role="group" aria-label="Weight units">
+            <button type="button" id="unit-kg" aria-pressed="true">kg</button>
+            <button type="button" id="unit-lb" aria-pressed="false">lb</button>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label for="age">Your age</label>
+          <input type="number" id="age" value="35" min="1" max="120" step="1">
+        </div>
+        <div class="calc-field">
+          <label for="cans">Cans a day</label>
+          <input type="number" id="cans" value="1" min="0" max="60" step="1">
+        </div>
+      </div>
+
+      <div class="calc-out">
+        <p class="calc-headline" id="headline"></p>
+        <ul class="calc-list" id="results"></ul>
+        <p class="calc-note" id="agenote"></p>
+      </div>
+    </div>
+
+    <h2 id="first-limit">The thing most people don't expect</h2>
+
+    <p id="caffeine-para">Diet soda contains caffeine as well as aspartame, and caffeine has a much
+    tighter daily ceiling. Work through the arithmetic and you run out of caffeine headroom well
+    before you run out of aspartame headroom — for most adults, roughly half as many cans.</p>
+
+    <p>If you drink diet soda all day and something starts to feel wrong, the ingredient with the
+    documented dose-dependent effects at reachable amounts is the caffeine, not the sweetener.
+    That's worth knowing before you go looking for an explanation.</p>
+
+    <h2 id="assumptions">What the numbers assume</h2>
+
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Assumption</th><th>Value</th><th>Where it comes from</th></tr></thead>
+      <tbody>
+        <tr><td>Acceptable Daily Intake</td><td class="num">40 mg/kg/day</td><td>JECFA and EFSA, set 1981, reaffirmed 2023</td></tr>
+        <tr><td>US Acceptable Daily Intake</td><td class="num">50 mg/kg/day</td><td>US FDA</td></tr>
+        <tr><td>Aspartame per 12 oz can</td><td class="num">200 mg</td><td>Typical diet cola; WHO uses a 200–300 mg range</td></tr>
+        <tr><td>Caffeine per 12 oz can</td><td class="num">46 mg</td><td>Diet Coke; Diet Pepsi is 35 mg</td></tr>
+        <tr><td>Caffeine daily ceiling</td><td class="num">400 mg/day</td><td>US FDA, healthy adults</td></tr>
+        <tr><td>Aspartame per tabletop packet</td><td class="num">40 mg</td><td>Derived from FDA's own "75 packets for a 132 lb adult" figure</td></tr>
+        <tr><td>No-adverse-effect dose</td><td class="num">4,000 mg/kg/day</td><td>EFSA 2013 — the highest dose ever tested in animals</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout callout--warn">
+      <span class="callout-label">Why there's no height box</span>
+      <p>Because height isn't in the formula. The ADI is defined purely as milligrams per kilogram
+      of body weight — two people who weigh the same have the same limit regardless of how tall
+      they are. Adding a height field would have made the calculator look more thorough without
+      changing a single number, so it isn't here.</p>
+    </div>
+
+    <div class="callout callout--danger">
+      <span class="callout-label">This calculator does not apply to you if you have PKU</span>
+      <p>People with phenylketonuria can't process phenylalanine normally, and aspartame is about
+      half phenylalanine by weight. The ADI does not apply to them at all — the limit isn't a
+      number, it's avoidance, and it extends far beyond aspartame to protein generally. See
+      <a href="caveats.html#pku">the caveats page</a>.</p>
+    </div>
+
+    <h2 id="reading">How to read your result</h2>
+
+    <p>The limit this gives you is not a cliff edge. It already sits a hundredfold below the
+    highest dose ever fed to animals without an observable effect, and that dose was the ceiling of
+    the experiment rather than the point where harm began — no adverse effect turned up at any dose
+    tested. Going over the ADI on one unusual day is not a meaningful event. The number describes a
+    daily average across a lifetime, with a very large margin built in.</p>
+
+    <p>Measured intake in the real world sits far below it. The WHO's own exposure modelling puts
+    even high-consuming adults at 12 mg/kg/day or less — under a third of the limit. Most people
+    are nowhere near.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p>Figures sourced on the <a href="sources.html">sources page</a>. This is arithmetic against
+    published regulatory limits, not medical advice.</p>
+    <p>Corrections welcome: <a href="https://github.com/Tyorden/aspartame-facts/issues">open an issue</a>.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var LB_TO_KG = 0.45359237;
+  var ASPARTAME_PER_CAN = 200;   // mg
+  var CAFFEINE_PER_CAN = 46;     // mg
+  var CAFFEINE_CEILING = 400;    // mg/day, FDA healthy adults
+  var MG_PER_PACKET = 40;
+
+  var unit = 'kg';
+  var weightEl = document.getElementById('weight');
+  var ageEl = document.getElementById('age');
+  var cansEl = document.getElementById('cans');
+  var kgBtn = document.getElementById('unit-kg');
+  var lbBtn = document.getElementById('unit-lb');
+
+  function fmt(n, dp) {
+    return n.toLocaleString('en-US', {
+      minimumFractionDigits: dp || 0,
+      maximumFractionDigits: dp || 0
+    });
+  }
+
+  function setUnit(next) {
+    if (next === unit) return;
+    var v = parseFloat(weightEl.value);
+    if (!isNaN(v)) {
+      weightEl.value = next === 'kg'
+        ? Math.round(v * LB_TO_KG)
+        : Math.round(v / LB_TO_KG);
+    }
+    unit = next;
+    kgBtn.setAttribute('aria-pressed', String(next === 'kg'));
+    lbBtn.setAttribute('aria-pressed', String(next === 'lb'));
+    render();
+  }
+
+  function render() {
+    var raw = parseFloat(weightEl.value);
+    var age = parseInt(ageEl.value, 10);
+    var cans = parseFloat(cansEl.value);
+    var headline = document.getElementById('headline');
+    var list = document.getElementById('results');
+    var note = document.getElementById('agenote');
+
+    if (isNaN(raw) || raw <= 0) {
+      headline.textContent = 'Enter your weight to see your limit.';
+      list.innerHTML = '';
+      note.textContent = '';
+      return;
+    }
+    if (isNaN(cans) || cans < 0) cans = 0;
+
+    var kg = unit === 'kg' ? raw : raw * LB_TO_KG;
+    var adiEu = 40 * kg;
+    var adiUs = 50 * kg;
+    var cansToAdi = adiEu / ASPARTAME_PER_CAN;
+    var packetsToAdi = adiEu / MG_PER_PACKET;
+    var cansToCaffeine = CAFFEINE_CEILING / CAFFEINE_PER_CAN;
+    var intake = cans * ASPARTAME_PER_CAN;
+    var pct = (intake / adiEu) * 100;
+    var caffeineIntake = cans * CAFFEINE_PER_CAN;
+    var caffeinePct = (caffeineIntake / CAFFEINE_CEILING) * 100;
+    var noael = 4000 * kg;
+
+    headline.innerHTML = 'Your daily limit works out at <strong>' + fmt(adiEu) +
+      ' mg</strong> of aspartame — about <strong>' + fmt(cansToAdi, 1) +
+      '</strong> cans of diet soda, every day, for life.';
+
+    var rows = [
+      ['ADI at the EU / WHO limit (40 mg/kg)', fmt(adiEu) + ' mg'],
+      ['ADI at the US FDA limit (50 mg/kg)', fmt(adiUs) + ' mg'],
+      ['Cans of diet soda to reach it', fmt(cansToAdi, 1) + ' / day'],
+      ['Tabletop sweetener packets to reach it', fmt(packetsToAdi, 0) + ' / day'],
+      ['Highest dose with no observed effect in animals', fmt(noael) + ' mg'],
+      ['At ' + fmt(cans, 0) + ' can' + (cans === 1 ? '' : 's') + ' a day, your aspartame intake is',
+        fmt(intake) + ' mg — ' + fmt(pct, 1) + '% of your limit'],
+      ['…and your caffeine intake is',
+        fmt(caffeineIntake) + ' mg — ' + fmt(caffeinePct, 0) + '% of the 400 mg ceiling']
+    ];
+
+    list.innerHTML = rows.map(function (r) {
+      return '<li><span>' + r[0] + '</span><span class="v">' + r[1] + '</span></li>';
+    }).join('');
+
+    // Which ceiling do you hit first?
+    var para = document.getElementById('caffeine-para');
+    if (para) {
+      var ratio = cansToAdi / cansToCaffeine;
+      para.innerHTML = 'Diet soda contains caffeine as well as aspartame, and caffeine has a much ' +
+        'tighter daily ceiling. At your weight you could drink <strong>' + fmt(cansToAdi, 1) +
+        '</strong> cans a day before reaching the aspartame limit — but only <strong>' +
+        fmt(cansToCaffeine, 1) + '</strong> before reaching the FDA\'s caffeine ceiling. ' +
+        'You run out of caffeine headroom roughly ' + fmt(ratio, 1) +
+        '× sooner than aspartame headroom.';
+    }
+
+    var msg = '';
+    if (!isNaN(age) && age < 18) {
+      msg = 'A note on age: the arithmetic is the same for children, but regulators model them ' +
+        'separately because the same number of cans is a much bigger dose in a smaller body. ' +
+        'EFSA\'s worst-case estimate put high-consuming toddlers at 92% of the ADI. The FDA\'s ' +
+        '400 mg caffeine ceiling is also an adult figure and does not apply to under-18s.';
+    } else if (!isNaN(age) && age >= 65) {
+      msg = 'A note on age: the ADI is the same at every adult age. The 2025 Neurology study that ' +
+        'prompted a lot of recent worry found no association at all in adults over 60.';
+    } else {
+      msg = 'The ADI is the same for all adults at a given body weight. Pregnancy does not change ' +
+        'it either — EFSA assessed that specifically and found aspartame at or below the ADI does ' +
+        'not push maternal phenylalanine past the clinical threshold.';
+    }
+    note.textContent = msg;
+  }
+
+  kgBtn.addEventListener('click', function () { setUnit('kg'); });
+  lbBtn.addEventListener('click', function () { setUnit('lb'); });
+  [weightEl, ageEl, cansEl].forEach(function (el) {
+    el.addEventListener('input', render);
+  });
+  render();
+})();
+</script>
+
+</body>
+</html>
