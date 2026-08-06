@@ -40,6 +40,15 @@
 
   <div class="prose">
 
+    <p>Regulators set a number called the <strong>Acceptable Daily Intake</strong> — the amount you
+    could have every single day for your whole life without expecting any harm. It's set per
+    kilogram you weigh, which is why it's different for everyone, and it's set with a large
+    deliberate safety margin: a hundred times below the largest amount that did nothing at all to
+    animals in testing.</p>
+
+    <p>Europe and the World Health Organization use 40 mg per kilogram. The United States allows
+    50. Enter your weight and it'll do the rest.</p>
+
     <div class="calc">
       <div class="calc-row">
         <div class="calc-field">
@@ -86,13 +95,13 @@
     <table>
       <thead><tr><th>Assumption</th><th>Value</th><th>Where it comes from</th></tr></thead>
       <tbody>
-        <tr><td>Acceptable Daily Intake</td><td class="num">40 mg/kg/day</td><td>JECFA and EFSA, set 1981, reaffirmed 2023</td></tr>
-        <tr><td>US Acceptable Daily Intake</td><td class="num">50 mg/kg/day</td><td>US FDA</td></tr>
+        <tr><td>Daily limit, Europe and WHO</td><td class="num">40 mg/kg/day</td><td>The WHO's food additives committee and the European Food Safety Authority; set 1981, reaffirmed 2023</td></tr>
+        <tr><td>Daily limit, United States</td><td class="num">50 mg/kg/day</td><td>US Food and Drug Administration</td></tr>
         <tr><td>Aspartame per 12 oz can</td><td class="num">200 mg</td><td>Typical diet cola; WHO uses a 200–300 mg range</td></tr>
         <tr><td>Caffeine per 12 oz can</td><td class="num">46 mg</td><td>Diet Coke; Diet Pepsi is 35 mg</td></tr>
         <tr><td>Caffeine daily ceiling</td><td class="num">400 mg/day</td><td>US FDA, healthy adults</td></tr>
         <tr><td>Aspartame per tabletop packet</td><td class="num">40 mg</td><td>Derived from FDA's own "75 packets for a 132 lb adult" figure</td></tr>
-        <tr><td>No-adverse-effect dose</td><td class="num">4,000 mg/kg/day</td><td>EFSA 2013 — the highest dose ever tested in animals</td></tr>
+        <tr><td>Largest amount that did nothing to animals</td><td class="num">4,000 mg/kg/day</td><td>European Food Safety Authority, 2013 — and this was the highest dose they tested, not the point where harm started</td></tr>
       </tbody>
     </table>
     </div>
@@ -204,16 +213,19 @@
       ' mg</strong> of aspartame — about <strong>' + fmt(cansToAdi, 1) +
       '</strong> cans of diet soda, every day, for life.';
 
+    var noaelCans = noael / ASPARTAME_PER_CAN;
+
     var rows = [
-      ['ADI at the EU / WHO limit (40 mg/kg)', fmt(adiEu) + ' mg'],
-      ['ADI at the US FDA limit (50 mg/kg)', fmt(adiUs) + ' mg'],
-      ['Cans of diet soda to reach it', fmt(cansToAdi, 1) + ' / day'],
-      ['Tabletop sweetener packets to reach it', fmt(packetsToAdi, 0) + ' / day'],
-      ['Highest dose with no observed effect in animals', fmt(noael) + ' mg'],
-      ['At ' + fmt(cans, 0) + ' can' + (cans === 1 ? '' : 's') + ' a day, your aspartame intake is',
-        fmt(intake) + ' mg — ' + fmt(pct, 1) + '% of your limit'],
-      ['…and your caffeine intake is',
-        fmt(caffeineIntake) + ' mg — ' + fmt(caffeinePct, 0) + '% of the 400 mg ceiling']
+      ['Your daily limit — Europe and the WHO', fmt(adiEu) + ' mg'],
+      ['Your daily limit — United States (theirs is higher)', fmt(adiUs) + ' mg'],
+      ['Cans of diet soda that would take', fmt(cansToAdi, 1) + ' a day'],
+      ['Or sachets of tabletop sweetener', fmt(packetsToAdi, 0) + ' a day'],
+      ['Amount that caused no harm at all in animal studies',
+        fmt(noael) + ' mg — the same as ' + fmt(noaelCans) + ' cans a day'],
+      ['You said ' + fmt(cans, 0) + ' can' + (cans === 1 ? '' : 's') + ' a day. That is',
+        fmt(intake) + ' mg of aspartame — ' + fmt(pct, 1) + '% of your limit'],
+      ['The caffeine in those same cans is',
+        fmt(caffeineIntake) + ' mg — ' + fmt(caffeinePct, 0) + '% of the caffeine ceiling']
     ];
 
     list.innerHTML = rows.map(function (r) {
