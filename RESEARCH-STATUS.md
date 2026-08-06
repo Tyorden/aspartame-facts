@@ -14,7 +14,17 @@ verify" section. **Nothing is published on the site that isn't traceable to one 
 | `jecfa-iarc-2023.md` | The July 2023 WHO split; hazard vs risk; what "limited evidence" consisted of; the three cohorts; dose arithmetic; post-2023 evidence | `the-evidence.html`, `myths.html`, `caveats.html` |
 | `elsa-brasil-cognition-2025.md` | The *Neurology* sweetener–cognition study; both correction notices verified across three registries; effect sizes; published correspondence and author replies | `the-study.html`, `myths.html` |
 
-## Batch 1 — in progress, 8 briefs
+## Batch 1 — complete, 8 briefs
+
+Ran 2026-08-04. 8/8 completed, zero errors, 674k subagent tokens, 364 tool calls, ~11 minutes.
+Two errors in already-published site content were caught by these briefs and corrected:
+
+- The "tomato juice has 6× the methanol of diet cola" claim could not be traced to a primary
+  per-serving measurement. Replaced with a comparison derived from EFSA's concentration tables
+  (~4×), labelled as derived.
+- The EPIC liver-cancer sub-group count was published here as 101 cases. The paper was formally
+  corrected in 2024 to 151. Fixed on both pages that carried it.
+
 
 The claims people actually arrive believing. Script: `tools/research-batch-1.workflow.js`.
 
