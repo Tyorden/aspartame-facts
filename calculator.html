@@ -218,7 +218,10 @@
 
     var noaelCans = noael / ASPARTAME_PER_CAN;
 
+    var lb = kg / LB_TO_KG;
+
     var rows = [
+      ['The weight you entered', fmt(kg) + ' kg (' + fmt(lb) + ' lb)'],
       ['Your daily limit — Europe and the WHO', fmt(adiEu) + ' mg'],
       ['Your daily limit — United States (theirs is higher)', fmt(adiUs) + ' mg'],
       ['Cans of diet soda that would take', fmt(cansToAdi, 1) + ' a day'],
