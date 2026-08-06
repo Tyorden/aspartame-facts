@@ -96,8 +96,8 @@
       <thead><tr><th>Assumption</th><th>Value</th><th>Where it comes from</th></tr></thead>
       <tbody>
         <tr><td>Daily limit, Europe and WHO</td><td class="num">40 mg/kg/day</td><td>The WHO's food additives committee and the European Food Safety Authority; set 1981, reaffirmed 2023</td></tr>
-        <tr><td>Daily limit, United States</td><td class="num">50 mg/kg/day</td><td>US Food and Drug Administration</td></tr>
-        <tr><td>Aspartame per 12 oz can</td><td class="num">200 mg</td><td>Typical diet cola; WHO uses a 200–300 mg range</td></tr>
+        <tr><td>Daily limit, United States</td><td class="num">50 mg/kg/day</td><td>US Food and Drug Administration. Was 20 mg/kg from 1974; raised to 50 in July 1983 alongside the approval for fizzy drinks, and derived from human clinical data rather than the animal NOAEL Europe used</td></tr>
+        <tr><td>Aspartame per 12 oz can</td><td class="num">200 mg</td><td>Upper end of the measured range for diet cola; WHO uses 200–300 mg for its own arithmetic. Using a high figure is conservative — it makes the cans-to-limit number smaller</td></tr>
         <tr><td>Caffeine per 12 oz can</td><td class="num">46 mg</td><td>Diet Coke; Diet Pepsi is 35 mg</td></tr>
         <tr><td>Caffeine daily ceiling</td><td class="num">400 mg/day</td><td>US FDA, healthy adults</td></tr>
         <tr><td>Aspartame per tabletop packet</td><td class="num">40 mg</td><td>Derived from FDA's own "75 packets for a 132 lb adult" figure</td></tr>
@@ -117,7 +117,7 @@
     <div class="callout callout--danger">
       <span class="callout-label">This calculator does not apply to you if you have PKU</span>
       <p>People with phenylketonuria can't process phenylalanine normally, and aspartame is about
-      half phenylalanine by weight. The ADI does not apply to them at all — the limit isn't a
+      56% phenylalanine by weight. The ADI does not apply to them at all — the limit isn't a
       number, it's avoidance, and it extends far beyond aspartame to protein generally. See
       <a href="caveats.html#pku">the caveats page</a>.</p>
     </div>
@@ -125,9 +125,7 @@
     <h2 id="reading">How to read your result</h2>
 
     <p>The limit this gives you is not a cliff edge. It already sits a hundredfold below the
-    highest dose ever fed to animals without an observable effect, and that dose was the ceiling of
-    the experiment rather than the point where harm began — no adverse effect turned up at any dose
-    tested. Going over the ADI on one unusual day is not a meaningful event. The number describes a
+    highest dose used in the long-term rat study the limit is derived from. Going over the limit on one unusual day is not a meaningful event. The number describes a
     daily average across a lifetime, with a very large margin built in.</p>
 
     <p>Measured intake in the real world sits far below it. The WHO's own exposure modelling puts
@@ -235,13 +233,20 @@
     // Which ceiling do you hit first?
     var para = document.getElementById('caffeine-para');
     if (para) {
-      var ratio = cansToAdi / cansToCaffeine;
-      para.innerHTML = 'Diet soda contains caffeine as well as aspartame, and caffeine has a much ' +
-        'tighter daily ceiling. At your weight you could drink <strong>' + fmt(cansToAdi, 1) +
-        '</strong> cans a day before reaching the aspartame limit — but only <strong>' +
-        fmt(cansToCaffeine, 1) + '</strong> before reaching the FDA\'s caffeine ceiling. ' +
-        'You run out of caffeine headroom roughly ' + fmt(ratio, 1) +
-        '× sooner than aspartame headroom.';
+      var lead = 'Diet soda contains caffeine as well as aspartame, and the two have very ' +
+        'different daily ceilings. At your weight you could drink <strong>' + fmt(cansToAdi, 1) +
+        '</strong> cans a day before reaching the aspartame limit, and <strong>' +
+        fmt(cansToCaffeine, 1) + '</strong> before reaching the caffeine ceiling. ';
+      if (cansToAdi > cansToCaffeine) {
+        para.innerHTML = lead + 'So <strong>caffeine is your binding limit</strong> — you run out ' +
+          'of caffeine headroom roughly ' + fmt(cansToAdi / cansToCaffeine, 1) +
+          '× sooner than aspartame headroom. That holds for anyone over about 44 kg (96 lb).';
+      } else {
+        para.innerHTML = lead + 'At this body weight the <strong>aspartame limit is the binding ' +
+          'one</strong> — it arrives first. The two ceilings cross at about 44 kg (96 lb): above ' +
+          'that, caffeine runs out first; below it, aspartame does. Note the 400 mg caffeine ' +
+          'figure is an adult guideline and does not apply to children in any case.';
+      }
     }
 
     var msg = '';
